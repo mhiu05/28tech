@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 #define endl "\n"
-#define ms(a, x) memset(a, x, sizeof(a))
 using namespace std;
 
 void faster()
