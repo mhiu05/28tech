@@ -13,7 +13,6 @@ class Person:
             self.birthday = "0" + self.birthday
         if self.birthday[5] != "/":
             self.birthday = self.birthday[:3] + "0" + self.birthday[3:]
-
         # standardize name:
         self.name = self.name.title()
 
@@ -32,8 +31,16 @@ class Student(Person):
         return self.msv + " " + Person.__str__(self) + " " + self.Class + " " + self.gpa
 
 
+def cmp_name(s):
+    a = s.split()
+    res = a[-1] + " "
+    res += " ".join(a[:-1])
+    return res
+
+
 if __name__ == "__main__":
     n = int(input())
+    a = []
     for i in range(n):
         name = input()
         birthday = input()
@@ -42,4 +49,7 @@ if __name__ == "__main__":
         gpa = float(input())
         s = Student(int(i + 1), name, birthday, address, Class, gpa)
         s.standardize()
-        print(s)
+        a.append(s)
+        a.sort(key=lambda x: (cmp_name(x.name)))
+    for i in a:
+        print(i)
